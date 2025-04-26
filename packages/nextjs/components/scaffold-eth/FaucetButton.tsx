@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "../shad/button";
+import { LoaderCircle } from "lucide-react";
 import { createWalletClient, http, parseEther } from "viem";
 import { hardhat } from "viem/chains";
 import { useAccount } from "wagmi";
@@ -52,22 +54,29 @@ export const FaucetButton = () => {
 
   const isBalanceZero = balance && balance.value === 0n;
 
+
+  //TODO: si el balance es 0 mostrar el toop tip para siempre
+
   return (
-    <div
-      className={
-        !isBalanceZero
-          ? "ml-1"
-          : "ml-1 tooltip tooltip-bottom tooltip-secondary tooltip-open font-bold before:left-auto before:transform-none before:content-[attr(data-tip)] before:right-0"
-      }
-      data-tip="Grab funds from faucet"
-    >
-      <button className="btn btn-secondary btn-sm px-2 rounded-full" onClick={sendETH} disabled={loading}>
-        {!loading ? (
-          <BanknotesIcon className="h-4 w-4" />
-        ) : (
-          <span className="loading loading-spinner loading-xs"></span>
-        )}
-      </button>
-    </div>
+    <Button variant="outline" size="icon" className="rounded-full" onClick={sendETH} disabled={loading}>
+      {!loading ? <BanknotesIcon className="h-4 w-4" /> : <LoaderCircle className="h-4 w-4 animate-spin " />}
+    </Button>
+
+    // <div
+    //   className={
+    //     !isBalanceZero
+    //       ? "ml-1"
+    //       : "ml-1 tooltip tooltip-bottom tooltip-secondary tooltip-open font-bold before:left-auto before:transform-none before:content-[attr(data-tip)] before:right-0"
+    //   }
+    //   data-tip="Grab funds from faucet"
+    // >
+    //   <button className="btn btn-secondary btn-sm px-2 rounded-full" onClick={sendETH} disabled={loading}>
+    //     {!loading ? (
+    //       <BanknotesIcon className="h-4 w-4" />
+    //     ) : (
+    //       <span className="loading loading-spinner loading-xs"></span>
+    //     )}
+    //   </button>
+    // </div>
   );
 };

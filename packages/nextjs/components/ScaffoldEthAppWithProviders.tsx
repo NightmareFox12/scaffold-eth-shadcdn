@@ -1,6 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import AppHeader from "./AppHeader";
+import AppSidebar from "./AppSideBar";
+import { Button } from "./shad/button";
+import { Sidebar, SidebarInset, SidebarProvider, SidebarTrigger, useSidebar } from "./shad/sidebar";
 import { RainbowKitProvider, darkTheme, lightTheme } from "@rainbow-me/rainbowkit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
@@ -18,12 +22,23 @@ const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-      <div className={`flex flex-col min-h-screen `}>
+      <SidebarProvider defaultOpen={false}>
+        <AppSidebar />
+        <SidebarInset>
+          <AppHeader />
+          <main className="flex-1 flex flex-col min-h-screen">{children}</main>
+          <Toaster />
+        </SidebarInset>
+      </SidebarProvider>
+
+      {/* 
+      <div className="flex flex-col min-h-screen">
         <Header />
         <main className="relative flex flex-col flex-1">{children}</main>
         <Footer />
       </div>
-      <Toaster />
+      <Toaster /> 
+      */}
     </>
   );
 };
