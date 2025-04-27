@@ -15,6 +15,7 @@ import {
 } from "~~/app/debug/_components/contract";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
 import { getParsedError, notification } from "~~/utils/scaffold-eth";
+import { Button } from "~~/components/shad/ui/button";
 
 type ReadOnlyFunctionFormProps = {
   contractAddress: Address;
@@ -85,8 +86,9 @@ export const ReadOnlyFunctionForm = ({
             </div>
           )}
         </div>
-        <button
-          className="btn btn-secondary btn-sm self-end md:self-start"
+
+        <Button
+          className="btn-secondary self-end md:self-start"
           onClick={async () => {
             const { data } = await refetch();
             setResult(data);
@@ -95,7 +97,7 @@ export const ReadOnlyFunctionForm = ({
         >
           {isFetching && <span className="loading loading-spinner loading-xs"></span>}
           Read 📡
-        </button>
+        </Button>
       </div>
     </div>
   );

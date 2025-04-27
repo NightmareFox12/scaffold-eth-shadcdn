@@ -17,6 +17,7 @@ import { IntegerInput } from "~~/components/scaffold-eth";
 import { useTransactor } from "~~/hooks/scaffold-eth";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
 import { simulateContractWriteAndNotifyError } from "~~/utils/scaffold-eth/contract";
+import { Button } from "~~/components/shad/ui/button";
 
 type WriteOnlyFunctionFormProps = {
   abi: Abi;
@@ -129,10 +130,10 @@ export const WriteOnlyFunctionForm = ({
             }`}
             data-tip={`${writeDisabled && "Wallet not connected or in the wrong network"}`}
           >
-            <button className="btn btn-secondary btn-sm" disabled={writeDisabled || isPending} onClick={handleWrite}>
+            <Button className="btn-secondary" disabled={writeDisabled || isPending} onClick={handleWrite}>
               {isPending && <span className="loading loading-spinner loading-xs"></span>}
               Send 💸
-            </button>
+            </Button>
           </div>
         </div>
       </div>
