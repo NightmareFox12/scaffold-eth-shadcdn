@@ -13,7 +13,7 @@ import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
 import { getBlockExplorerAddressLink } from "~~/utils/scaffold-eth";
 
 /**
- * Custom Wagmi Connect Button (watch balance + custom design)
+ * Custom Wagmi Connect Button (watch balance + shadcdn design)
  */
 export const RainbowKitCustomConnectButton = () => {
   const networkColor = useNetworkColor();
@@ -32,12 +32,9 @@ export const RainbowKitCustomConnectButton = () => {
             {(() => {
               if (!connected) {
                 return (
-                  <Button className="" onClick={openConnectModal}>
+                  <Button onClick={openConnectModal}>
                   Connect Wallet
                 </Button>
-                  // <button className="btn btn-primary btn-sm" onClick={openConnectModal} type="button">
-                  //   Connect Wallet
-                  // </button>
                 );
               }
 
@@ -59,7 +56,7 @@ export const RainbowKitCustomConnectButton = () => {
                     ensAvatar={account.ensAvatar}
                     blockExplorerAddressLink={blockExplorerAddressLink}
                   />
-                  <AddressQRCodeModal address={account.address as Address} modalId="qrcode-modal" />
+                  <AddressQRCodeModal address={account.address as Address} />
                 </>
               );
             })()}
