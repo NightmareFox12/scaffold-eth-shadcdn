@@ -151,6 +151,7 @@ export const Address = ({
           size={(blockieSizeMap[blockieSize] * 24) / blockieSizeMap["base"]}
         />
       </div>
+
       <div className="flex flex-col">
         {showSkeleton &&
           (isEnsNameLoading ? (
@@ -167,6 +168,7 @@ export const Address = ({
               </AddressLinkWrapper>
             </span>
           ))}
+          
         <div className="flex">
           <span className={`ml-1.5 ${textSizeMap[addressSize]} font-normal`}>
             <AddressLinkWrapper

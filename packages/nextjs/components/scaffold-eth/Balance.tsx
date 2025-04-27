@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "../shad/button";
 import { Address, formatEther } from "viem";
 import { useDisplayUsdMode } from "~~/hooks/scaffold-eth/useDisplayUsdMode";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
@@ -20,13 +21,7 @@ export const Balance = ({ address, className = "", usdMode }: BalanceProps) => {
   const nativeCurrencyPrice = useGlobalState(state => state.nativeCurrency.price);
   const isNativeCurrencyPriceFetching = useGlobalState(state => state.nativeCurrency.isFetching);
 
-  const {
-    data: balance,
-    isError,
-    isLoading,
-  } = useWatchBalance({
-    address,
-  });
+  const { data: balance, isError, isLoading } = useWatchBalance({ address });
 
   const { displayUsdMode, toggleDisplayUsdMode } = useDisplayUsdMode({ defaultUsdMode: usdMode });
 
@@ -52,10 +47,11 @@ export const Balance = ({ address, className = "", usdMode }: BalanceProps) => {
   const formattedBalance = balance ? Number(formatEther(balance.value)) : 0;
 
   return (
-    <button
-      className={`btn btn-sm btn-ghost flex flex-col font-normal items-center hover:bg-transparent ${className}`}
+    <Button
+      variant="ghost"
+      className={`p-0 hover:bg-transparent ${className}`}
+      // className={`btn btn-sm btn-ghost flex flex-col font-normal items-center hover:bg-transparent ${className}`}
       onClick={toggleDisplayUsdMode}
-      type="button"
     >
       <div className="w-full flex items-center justify-center">
         {displayUsdMode ? (
@@ -70,6 +66,6 @@ export const Balance = ({ address, className = "", usdMode }: BalanceProps) => {
           </>
         )}
       </div>
-    </button>
+    </Button>
   );
 };

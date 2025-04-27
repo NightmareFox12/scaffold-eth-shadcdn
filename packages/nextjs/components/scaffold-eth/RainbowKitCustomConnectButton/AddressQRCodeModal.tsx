@@ -1,7 +1,7 @@
 import { QRCodeSVG } from "qrcode.react";
 import { Address as AddressType } from "viem";
 import { Address } from "~~/components/scaffold-eth";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTrigger } from "~~/components/shad/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "~~/components/shad/dialog";
 
 type AddressQRCodeModalProps = {
   address: AddressType;
@@ -13,6 +13,7 @@ export const AddressQRCodeModal = ({ address }: AddressQRCodeModalProps) => {
       <DialogTrigger>Open</DialogTrigger>
       <DialogContent>
         <DialogHeader>
+          <DialogTitle className="text-center">QR Code</DialogTitle>
           <DialogDescription className="flex flex-col items-center gap-6 p-2">
             <QRCodeSVG value={address} size={256} />
             <Address address={address} format="long" disableAddressLink onlyEnsOrAddress />

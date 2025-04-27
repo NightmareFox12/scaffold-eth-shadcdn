@@ -6,6 +6,7 @@ import { AddressInfoDropdown } from "./AddressInfoDropdown";
 import { AddressQRCodeModal } from "./AddressQRCodeModal";
 import { WrongNetworkDropdown } from "./WrongNetworkDropdown";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useEffect } from "react";
 import { Address } from "viem";
 import { Button } from "~~/components/shad/button";
 import { useNetworkColor } from "~~/hooks/scaffold-eth";
@@ -18,6 +19,11 @@ import { getBlockExplorerAddressLink } from "~~/utils/scaffold-eth";
 export const RainbowKitCustomConnectButton = () => {
   const networkColor = useNetworkColor();
   const { targetNetwork } = useTargetNetwork();
+
+
+  useEffect(() => {
+    console.log("networkColor", networkColor);
+  }, [networkColor]);
 
   return (
     <ConnectButton.Custom>
@@ -38,10 +44,8 @@ export const RainbowKitCustomConnectButton = () => {
                 );
               }
 
-              if (chain.unsupported || chain.id !== targetNetwork.id) {
-                return <WrongNetworkDropdown />;
-              }
-
+              if (chain.unsupported || chain.id !== targetNetwork.id) return <WrongNetworkDropdown />;
+              
               return (
                 <>
                   <div className="flex flex-col items-center mr-1">
