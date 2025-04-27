@@ -71,7 +71,7 @@ const AppHeader: NextPage = () => {
   const isMobile = useIsMobile();
 
   return (
-    <header className="border-b p-4 flex justify-between">
+    <header className="border-b p-4 flex justify-between bg-base-100">
       {isMobile ? (
         <Button onClick={toggleSidebar}>
           <Bars3Icon className="h-1/2" />
