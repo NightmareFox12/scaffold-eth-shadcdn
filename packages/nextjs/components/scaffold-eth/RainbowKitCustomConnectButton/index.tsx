@@ -21,6 +21,7 @@ export const RainbowKitCustomConnectButton = () => {
   const { targetNetwork } = useTargetNetwork();
 
 
+  //TODO: DELETE THIS
   useEffect(() => {
     console.log("networkColor", networkColor);
   }, [networkColor]);
@@ -60,7 +61,6 @@ export const RainbowKitCustomConnectButton = () => {
                     ensAvatar={account.ensAvatar}
                     blockExplorerAddressLink={blockExplorerAddressLink}
                   />
-                  <AddressQRCodeModal address={account.address as Address} />
                 </>
               );
             })()}
