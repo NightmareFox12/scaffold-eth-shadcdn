@@ -1,12 +1,12 @@
 "use client";
 
 // @refresh reset
+import { useEffect } from "react";
 import { Balance } from "../Balance";
 import { AddressInfoDropdown } from "./AddressInfoDropdown";
-import { AddressQRCodeModal } from "./AddressQRCodeModal";
 import { WrongNetworkDropdown } from "./WrongNetworkDropdown";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { useEffect } from "react";
+import { useTheme } from "next-themes";
 import { Address } from "viem";
 import { Button } from "~~/components/shad/button";
 import { useNetworkColor } from "~~/hooks/scaffold-eth";
@@ -19,12 +19,7 @@ import { getBlockExplorerAddressLink } from "~~/utils/scaffold-eth";
 export const RainbowKitCustomConnectButton = () => {
   const networkColor = useNetworkColor();
   const { targetNetwork } = useTargetNetwork();
-
-
-  //TODO: DELETE THIS
-  useEffect(() => {
-    console.log("networkColor", networkColor);
-  }, [networkColor]);
+  const { theme } = useTheme();
 
   return (
     <ConnectButton.Custom>
@@ -38,20 +33,24 @@ export const RainbowKitCustomConnectButton = () => {
           <>
             {(() => {
               if (!connected) {
-                return (
-                  <Button onClick={openConnectModal}>
-                  Connect Wallet
-                </Button>
-                );
+                return <Button onClick={openConnectModal}>Connect Wallet</Button>;
               }
 
               if (chain.unsupported || chain.id !== targetNetwork.id) return <WrongNetworkDropdown />;
-              
+
               return (
                 <>
                   <div className="flex flex-col items-center mr-1">
                     <Balance address={account.address as Address} className="min-h-0 h-auto" />
-                    <span className="text-xs" style={{ color: networkColor }}>
+                    <span
+                      className="text-xs"
+                      style={{
+                        color:
+                          typeof targetNetwork.color !== "string"
+                            ? networkColor[theme === "dark" ? 1 : 0]
+                            : targetNetwork.color,
+                      }}
+                    >
                       {chain.name}
                     </span>
                   </div>
