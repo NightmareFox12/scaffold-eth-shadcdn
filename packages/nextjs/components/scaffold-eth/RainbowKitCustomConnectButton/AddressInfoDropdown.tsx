@@ -15,8 +15,8 @@ import {
   QrCodeIcon,
 } from "@heroicons/react/24/outline";
 import { BlockieAvatar, isENS } from "~~/components/scaffold-eth";
-import { Button } from "~~/components/shad/button";
-import { Popover, PopoverContent, PopoverTrigger } from "~~/components/shad/popover";
+import { Button } from "~~/components/shad/ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "~~/components/shad/ui/popover";
 import { getTargetNetworks } from "~~/utils/scaffold-eth";
 
 const allowedNetworks = getTargetNetworks();

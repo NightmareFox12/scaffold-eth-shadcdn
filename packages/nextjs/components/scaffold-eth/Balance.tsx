@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "../shad/button";
+import { Button } from "../shad/ui/button";
 import { Address, formatEther } from "viem";
 import { useDisplayUsdMode } from "~~/hooks/scaffold-eth/useDisplayUsdMode";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
@@ -50,7 +50,6 @@ export const Balance = ({ address, className = "", usdMode }: BalanceProps) => {
     <Button
       variant="ghost"
       className={`p-0 hover:bg-transparent ${className}`}
-      // className={`btn btn-sm btn-ghost flex flex-col font-normal items-center hover:bg-transparent ${className}`}
       onClick={toggleDisplayUsdMode}
     >
       <div className="w-full flex items-center justify-center">

@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { Address as AddressType } from "viem";
 import { Address } from "~~/components/scaffold-eth";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "~~/components/shad/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "~~/components/shad/ui/dialog";
 
 type AddressQRCodeModalProps = {
   address: AddressType;

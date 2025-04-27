@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "../shad/button";
+import { Button } from "../shad/ui/button";
 import { LoaderCircle } from "lucide-react";
 import { createWalletClient, http, parseEther } from "viem";
 import { hardhat } from "viem/chains";

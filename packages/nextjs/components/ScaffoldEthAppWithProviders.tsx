@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import AppHeader from "./AppHeader";
 import AppSidebar from "./AppSideBar";
-import { Button } from "./shad/button";
-import { Sidebar, SidebarInset, SidebarProvider, SidebarTrigger, useSidebar } from "./shad/sidebar";
+import { Button } from "./shad/ui/button";
+import { Sidebar, SidebarInset, SidebarProvider, SidebarTrigger, useSidebar } from "./shad/ui/sidebar";
 import { RainbowKitProvider, darkTheme, lightTheme } from "@rainbow-me/rainbowkit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AppProgressBar as ProgressBar } from "next-nprogress-bar";

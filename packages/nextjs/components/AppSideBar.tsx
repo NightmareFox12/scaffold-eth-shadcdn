@@ -1,4 +1,4 @@
-import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarHeader } from "./shad/sidebar";
+import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarHeader } from "./shad/ui/sidebar";
 import { NextPage } from "next";
 
 const AppSidebar: NextPage = () => {

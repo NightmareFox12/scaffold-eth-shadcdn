@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { hardhat } from "viem/chains";
 import { FaucetButton, RainbowKitCustomConnectButton } from "./scaffold-eth";
-import { Button } from "./shad/button";
-import { useSidebar } from "./shad/sidebar";
+import { Button } from "./shad/ui/button";
+import { useSidebar } from "./shad/ui/sidebar";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@radix-ui/react-tooltip";
 import { NextPage } from "next";
 import { BugAntIcon, HomeIcon } from "@heroicons/react/24/outline";
+import { useTargetNetwork } from "~~/hooks/scaffold-eth";
 
 type AppHeaderMenuLink = {
   label: string;
@@ -52,7 +54,11 @@ const HeaderMenuLinks = () => {
 
 // Site header
 const AppHeader: NextPage = () => {
+  const { targetNetwork } = useTargetNetwork();
+  const isLocalNetwork = targetNetwork.id === hardhat.id;
+
   const { open, toggleSidebar } = useSidebar();
+
 
   //states
   const [screenWidth, setScreenWidth] = useState<number>(0);
@@ -82,8 +88,8 @@ const AppHeader: NextPage = () => {
         </TooltipProvider> */}
 
         <RainbowKitCustomConnectButton />
+        {isLocalNetwork && <FaucetButton />}
 
-        <FaucetButton />
       </div>
     </header>
   );

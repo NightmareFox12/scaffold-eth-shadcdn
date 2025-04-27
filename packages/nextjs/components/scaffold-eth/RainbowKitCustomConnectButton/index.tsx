@@ -1,14 +1,13 @@
 "use client";
 
 // @refresh reset
-import { useEffect } from "react";
 import { Balance } from "../Balance";
 import { AddressInfoDropdown } from "./AddressInfoDropdown";
 import { WrongNetworkDropdown } from "./WrongNetworkDropdown";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useTheme } from "next-themes";
 import { Address } from "viem";
-import { Button } from "~~/components/shad/button";
+import { Button } from "~~/components/shad/ui/button";
 import { useNetworkColor } from "~~/hooks/scaffold-eth";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
 import { getBlockExplorerAddressLink } from "~~/utils/scaffold-eth";
