@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { hardhat } from "viem/chains";
 import { FaucetButton, RainbowKitCustomConnectButton } from "./scaffold-eth";
 import { Button } from "./shad/ui/button";
 import { useSidebar } from "./shad/ui/sidebar";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@radix-ui/react-tooltip";
 import { NextPage } from "next";
-import { BugAntIcon, HomeIcon } from "@heroicons/react/24/outline";
+import { hardhat } from "viem/chains";
+import { Bars3Icon, BugAntIcon, HomeIcon } from "@heroicons/react/24/outline";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth";
+import { useIsMobile } from "~~/hooks/shad/use-mobile";
 
 type AppHeaderMenuLink = {
   label: string;
@@ -32,10 +34,19 @@ const menuLinks: AppHeaderMenuLink[] = [
 
 const HeaderMenuLinks = () => {
   const pathname = usePathname();
-  const router = useRouter();
 
   return (
     <div className="flex gap-2">
+      <Link href="/" passHref className="flex items-center gap-2 mr-2 shrink-0">
+        <div className="flex relative w-10 h-10">
+          <Image alt="SE2 logo" className="cursor-pointer" fill src="/logo.svg" />
+        </div>
+        <div className="flex flex-col">
+          <span className="font-bold leading-tight">Scaffold-ETH</span>
+          <span className="text-xs">Ethereum dev stack</span>
+        </div>
+      </Link>
+
       {menuLinks.map(({ label, href, icon }) => {
         const isActive = pathname === href;
 
@@ -56,23 +67,18 @@ const HeaderMenuLinks = () => {
 const AppHeader: NextPage = () => {
   const { targetNetwork } = useTargetNetwork();
   const isLocalNetwork = targetNetwork.id === hardhat.id;
-
-  const { open, toggleSidebar } = useSidebar();
-
-
-  //states
-  const [screenWidth, setScreenWidth] = useState<number>(0);
-
-  useEffect(() => {
-    window.addEventListener("resize", () => setScreenWidth(window.innerWidth));
-
-    return () => window.removeEventListener("resize", () => setScreenWidth(window.innerWidth));
-  }, []);
+  const { toggleSidebar } = useSidebar();
+  const isMobile = useIsMobile();
 
   return (
     <header className="border-b p-4 flex justify-between">
-      {screenWidth <= 800 && <Button onClick={toggleSidebar}>Abre el sidebar</Button>}
-      <HeaderMenuLinks />
+      {isMobile ? (
+        <Button onClick={toggleSidebar}>
+          <Bars3Icon className="h-1/2" />
+        </Button>
+      ) : (
+        <HeaderMenuLinks />
+      )}
 
       <div className="flex justify-center gap-2">
         {/* <TooltipProvider>
@@ -89,7 +95,6 @@ const AppHeader: NextPage = () => {
 
         <RainbowKitCustomConnectButton />
         {isLocalNetwork && <FaucetButton />}
-
       </div>
     </header>
   );
