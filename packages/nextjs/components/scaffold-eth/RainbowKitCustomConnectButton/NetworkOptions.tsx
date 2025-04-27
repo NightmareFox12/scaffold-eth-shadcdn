@@ -1,6 +1,7 @@
 import { useTheme } from "next-themes";
 import { useAccount, useSwitchChain } from "wagmi";
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/solid";
+import { Button } from "~~/components/shad/button";
 import { getNetworkColor } from "~~/hooks/scaffold-eth";
 import { getTargetNetworks } from "~~/utils/scaffold-eth";
 
@@ -21,26 +22,29 @@ export const NetworkOptions = ({ hidden = false }: NetworkOptionsProps) => {
       {allowedNetworks
         .filter(allowedNetwork => allowedNetwork.id !== chain?.id)
         .map(allowedNetwork => (
-          <li key={allowedNetwork.id} className={hidden ? "hidden" : ""}>
-            <button
-              className="menu-item btn-sm !rounded-xl flex gap-3 py-3 whitespace-nowrap"
-              type="button"
+          <li key={allowedNetwork.id} className={`${hidden ? "hidden" : ""} list-none`}>
+            <Button
+              variant="ghost"
+              className="w-full"
+              // className="menu-item btn-sm !rounded-xl flex gap-3  whitespace-nowrap"
               onClick={() => {
                 switchChain?.({ chainId: allowedNetwork.id });
               }}
             >
-              <ArrowsRightLeftIcon className="h-6 w-4 ml-2 sm:ml-0" />
-              <span>
-                Switch to{" "}
-                <span
-                  style={{
-                    color: getNetworkColor(allowedNetwork, isDarkMode),
-                  }}
-                >
-                  {allowedNetwork.name}
+              <div className="flex flex-1 items-center gap-3">
+                <ArrowsRightLeftIcon className="h-4 w-4" />
+                <span>
+                  Switch to{" "}
+                  <span
+                    style={{
+                      color: getNetworkColor(allowedNetwork, isDarkMode),
+                    }}
+                  >
+                    {allowedNetwork.name}
+                  </span>
                 </span>
-              </span>
-            </button>
+              </div>
+            </Button>
           </li>
         ))}
     </>
