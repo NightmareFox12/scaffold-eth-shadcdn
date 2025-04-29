@@ -59,7 +59,7 @@ export const FaucetButton = () => {
 
   return (
     <Button size="icon" className="rounded-full bg-secondary" onClick={sendETH} disabled={loading}>
-      {!loading ? <BanknotesIcon className="h-4 w-4" /> : <LoaderCircle className="h-4 w-4 animate-spin " />}
+      {loading ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <BanknotesIcon className="h-4 w-4" />}
     </Button>
 
     // <div

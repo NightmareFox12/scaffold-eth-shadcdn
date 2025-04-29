@@ -10,6 +10,8 @@ import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { useAnimationConfig } from "~~/hooks/scaffold-eth";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
 import { getParsedError, notification } from "~~/utils/scaffold-eth";
+import { Button } from "~~/components/shad/ui/button";
+import { LoaderCircle } from "lucide-react";
 
 type DisplayVariableProps = {
   contractAddress: Address;
@@ -60,13 +62,13 @@ export const DisplayVariable = ({
     <div className="space-y-1 pb-2">
       <div className="flex items-center">
         <h3 className="font-medium text-lg mb-0 break-all">{abiFunction.name}</h3>
-        <button className="btn btn-ghost btn-xs" onClick={async () => await refetch()}>
+        <Button variant="ghost" className="hover:bg-transparent" onClick={async () => await refetch()}>
           {isFetching ? (
-            <span className="loading loading-spinner loading-xs"></span>
+            <LoaderCircle className="h-4 w-4 animate-spin" />
           ) : (
             <ArrowPathIcon className="h-3 w-3 cursor-pointer" aria-hidden="true" />
           )}
-        </button>
+        </Button>
         <InheritanceTooltip inheritedFrom={inheritedFrom} />
       </div>
       <div className="text-base-content/80 flex flex-col items-start">

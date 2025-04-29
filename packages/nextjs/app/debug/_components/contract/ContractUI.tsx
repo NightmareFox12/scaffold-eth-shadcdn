@@ -62,7 +62,7 @@ export const ContractUI = ({ contractName, className = "" }: ContractUIProps) =>
               </p>
             )}
           </div>
-          <div className="bg-base-300 rounded-3xl px-6 lg:px-8 py-4 shadow-lg shadow-base-300">
+          <div className="bg-base-100 rounded-3xl border-base-300 border shadow-md shadow-secondary px-6 lg:px-8 py-4">
             <ContractVariables
               refreshDisplayVariables={refreshDisplayVariables}
               deployedContractData={deployedContractData}
