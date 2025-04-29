@@ -52,7 +52,9 @@ const HeaderMenuLinks = () => {
 
         return (
           <Link key={href} href={href}>
-            <Button>
+            <Button variant={isActive ? "default" : "outline"}
+            className={isActive ? "bg-secondary" : ""}
+            >
               {icon}
               <span>{label}</span>
             </Button>

@@ -48,7 +48,7 @@ export const AddressInfoDropdown = ({
 
       <Popover>
         <PopoverTrigger asChild>
-          <Button>
+          <Button className="bg-secondary">
             <BlockieAvatar address={checkSumAddress} size={30} ensImage={ensAvatar} />
             <span className="ml-2 mr-1">
               {isENS(displayName) ? displayName : checkSumAddress?.slice(0, 6) + "..." + checkSumAddress?.slice(-4)}

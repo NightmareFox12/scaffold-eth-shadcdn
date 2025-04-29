@@ -58,7 +58,7 @@ export const FaucetButton = () => {
   //TODO: si el balance es 0 mostrar el toop tip para siempre
 
   return (
-    <Button variant="outline" size="icon" className="rounded-full" onClick={sendETH} disabled={loading}>
+    <Button size="icon" className="rounded-full bg-secondary" onClick={sendETH} disabled={loading}>
       {!loading ? <BanknotesIcon className="h-4 w-4" /> : <LoaderCircle className="h-4 w-4 animate-spin " />}
     </Button>
 
