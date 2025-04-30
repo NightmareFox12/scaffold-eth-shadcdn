@@ -84,7 +84,7 @@ export const ObjectFieldDisplay = ({
   leftPad?: boolean;
 }) => {
   return (
-    <div className={`flex flex-row items-baseline ${leftPad ? "ml-4" : ""}`}>
+    <div className={`flex flex-row items-baseline break-words w-96 ${leftPad ? "ml-4" : ""}`}>
       <span className="text-base-content/60 mr-2">{name}:</span>
       <span className="text-base-content">{displayTxResult(value, size)}</span>
     </div>

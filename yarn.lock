@@ -3932,6 +3932,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@radix-ui/react-collapsible@npm:^1.1.8":
+  version: 1.1.8
+  resolution: "@radix-ui/react-collapsible@npm:1.1.8"
+  dependencies:
+    "@radix-ui/primitive": 1.1.2
+    "@radix-ui/react-compose-refs": 1.1.2
+    "@radix-ui/react-context": 1.1.2
+    "@radix-ui/react-id": 1.1.1
+    "@radix-ui/react-presence": 1.1.4
+    "@radix-ui/react-primitive": 2.1.0
+    "@radix-ui/react-use-controllable-state": 1.2.2
+    "@radix-ui/react-use-layout-effect": 1.1.1
+  peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: 64dafc0a050a5ab4f6943723eb8b2e0013ad22e65191fcc414ea3b05c960658b185230be5d3a4b0b1a35c19611e0fa7268021caab0008d57498c63a4f4c85d18
+  languageName: node
+  linkType: hard
+
 "@radix-ui/react-collection@npm:1.1.4":
   version: 1.1.4
   resolution: "@radix-ui/react-collection@npm:1.1.4"
@@ -4771,6 +4797,7 @@ __metadata:
   resolution: "@se-2/nextjs@workspace:packages/nextjs"
   dependencies:
     "@heroicons/react": ~2.1.5
+    "@radix-ui/react-collapsible": ^1.1.8
     "@radix-ui/react-dialog": ^1.1.11
     "@radix-ui/react-dropdown-menu": ^2.1.12
     "@radix-ui/react-label": ^2.1.4
