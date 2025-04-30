@@ -3,6 +3,7 @@ import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 import { CommonInputProps, InputBase, SIGNED_NUMBER_REGEX } from "~~/components/scaffold-eth";
 import { useDisplayUsdMode } from "~~/hooks/scaffold-eth/useDisplayUsdMode";
 import { useGlobalState } from "~~/services/store/store";
+import { Button } from "~~/components/shad/ui/button";
 
 const MAX_DECIMALS_USD = 2;
 
@@ -113,14 +114,14 @@ export const EtherInput = ({
           }`}
           data-tip={isNativeCurrencyPriceFetching ? "Fetching price" : "Unable to fetch price"}
         >
-          <button
-            className="btn btn-primary h-[2.2rem] min-h-[2.2rem]"
+          <Button
+            className="bg-primary h-[2.2rem] min-h-[2.2rem]"
             onClick={toggleDisplayUsdMode}
             disabled={!displayUsdMode && !nativeCurrencyPrice}
             type="button"
           >
             <ArrowsRightLeftIcon className="h-3 w-3 cursor-pointer" aria-hidden="true" />
-          </button>
+          </Button>
         </div>
       }
     />

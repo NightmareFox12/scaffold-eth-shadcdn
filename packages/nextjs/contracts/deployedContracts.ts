@@ -7,8 +7,79 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     Look: {
-      address: "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
+      address: "0x610178dA211FEF7D417bC0e6FeD39F05609AD788",
       abi: [
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "age",
+              type: "uint256",
+            },
+            {
+              internalType: "bool",
+              name: "life",
+              type: "bool",
+            },
+          ],
+          name: "buyJuan",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "juanID",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "juans",
+          outputs: [
+            {
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "age",
+              type: "uint256",
+            },
+            {
+              internalType: "bool",
+              name: "life",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
         {
           inputs: [],
           name: "read",
